@@ -144,6 +144,8 @@ const skills = [
 const AboutMe = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+	const isMobile = window.innerWidth <= 500;
+
 	useEffect(() => {
 		const handleResize = () => setWindowWidth(window.innerWidth);
 		window.addEventListener('resize', handleResize);
@@ -219,6 +221,7 @@ const AboutMe = () => {
 									backgroundColor: '#9C442D',
 									padding: '1rem',
 									color: 'white',
+									fontSize: isMobile ? '10px' : '13px',
 								}}
 							/>
 						</ListItemText>
