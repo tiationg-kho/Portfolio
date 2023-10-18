@@ -10,6 +10,7 @@ const Contact = () => {
 	return (
 		<>
 			<IconButton
+				className='icon-button'
 				color='inherit'
 				href='https://github.com/tiationg-kho'
 				target='_blank'
@@ -18,6 +19,7 @@ const Contact = () => {
 				<GitHubIcon />
 			</IconButton>
 			<IconButton
+				className='icon-button'
 				color='inherit'
 				href='https://www.linkedin.com/in/tiationgkho'
 				target='_blank'
@@ -26,6 +28,7 @@ const Contact = () => {
 				<LinkedInIcon />
 			</IconButton>
 			<IconButton
+				className='icon-button'
 				color='inherit'
 				href='mailto:tiationgkho@gmail.com'
 				target='_blank'

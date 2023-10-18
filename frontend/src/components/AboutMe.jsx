@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
 	Container,
 	Typography,
@@ -143,7 +143,7 @@ const skills = [
 
 const AboutMe = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+	const skillItemRefs = useRef([]);
 	const isMobile = window.innerWidth <= 500;
 
 	useEffect(() => {
@@ -152,6 +152,29 @@ const AboutMe = () => {
 
 		return () => {
 			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	useEffect(() => {
+		skillItemRefs.current = skillItemRefs.current.slice(0, skills.length);
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+					}
+				});
+			},
+			{
+				threshold: 0.8,
+			}
+		);
+
+		skillItemRefs.current.forEach((ref) => ref && observer.observe(ref));
+
+		return () => {
+			skillItemRefs.current.forEach((ref) => ref && observer.unobserve(ref));
 		};
 	}, []);
 
@@ -202,8 +225,9 @@ const AboutMe = () => {
 					gap: '0.2rem',
 				}}
 			>
-				{skills.map((skill) => (
+				{skills.map((skill, idx) => (
 					<ListItem
+						className='skill-item-container'
 						key={skill.id + skill.name}
 						style={
 							windowWidth < 600
@@ -214,6 +238,7 @@ const AboutMe = () => {
 						<ListItemText>
 							<Chip
 								className='skill-item'
+								ref={(element) => (skillItemRefs.current[idx] = element)}
 								icon={skill.icon}
 								label={skill.name}
 								color='default'
