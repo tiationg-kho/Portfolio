@@ -15,7 +15,7 @@ function App() {
 
 	return (
 		<div className='app'>
-			<Parallax ref={parallax} pages={isMobile ? 4.5 : 3.6}>
+			<Parallax ref={parallax} pages={isMobile ? 4.3 : 3.6}>
 				<ParallaxLayer offset={2.2} speed={1.2} style={{ opacity: 0.4 }}>
 					<img
 						src='fav-green.svg'
