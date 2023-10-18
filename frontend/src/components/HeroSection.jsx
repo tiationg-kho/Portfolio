@@ -101,9 +101,12 @@ const HeroSection = ({ scrollToHandle }) => {
 						transform: 'translate(-50%, 0)',
 					}}
 					severity='error'
-					onClick={() => setShowAlert(false)}
 					action={
-						<Button color='inherit' size='small'>
+						<Button
+							color='inherit'
+							size='small'
+							onClick={() => setShowAlert(false)}
+						>
 							X
 						</Button>
 					}
