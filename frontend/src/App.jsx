@@ -15,7 +15,7 @@ function App() {
 
 	return (
 		<div className='app'>
-			<Parallax ref={parallax} pages={isMobile ? 4.3 : 3}>
+			<Parallax ref={parallax} pages={isMobile ? 4.2 : 2.55}>
 				<ParallaxLayer offset={0} speed={-0.1}>
 					<HeroSection scrollToHandle={scrollToHandle} />
 				</ParallaxLayer>
@@ -23,7 +23,7 @@ function App() {
 					<AboutMe />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={isMobile ? 3.9 : 2.7}
+					offset={isMobile ? 3.8 : 2.15}
 					speed={0.2}
 					onClick={() => parallax.current.scrollTo(0)}
 				>
