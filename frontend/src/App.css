@@ -2,15 +2,32 @@
 	margin: 2rem;
 	padding-left: 2rem;
 	padding-right: 2rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	background-color: rgba(163, 133, 99, 0.8);
+	border-radius: 1rem;
+	max-width: 96%;
 }
 .about-context {
 	padding-left: 2rem;
 	padding-right: 2rem;
 	text-align: justify;
 }
-
 .skill-item:hover {
 	cursor: pointer;
+	background-color: #c76e62 !important;
 	transform: scale(1.1);
+	transition: all 0.3s ease-in-out;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.intro-text {
+	animation: fadeIn ease 3s;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
