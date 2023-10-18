@@ -5,6 +5,7 @@ import {
 	Button,
 	Box,
 	CircularProgress,
+	Alert,
 } from '@mui/material';
 
 import Contact from './Contact';
@@ -15,6 +16,10 @@ const FULL_TEXT = 'Software Development Engineer @ Seattle';
 const HeroSection = ({ scrollToHandle }) => {
 	const [text, setText] = useState('S');
 	const [isLoading, setIsLoading] = useState(true);
+	const [count, setCount] = useState(0);
+	const [isBirdVisible, setIsBirdVisible] = useState(true);
+	const [isBirdSecondVisible, setIsBirdSecondVisible] = useState(true);
+	const [showAlert, setShowAlert] = useState(false);
 
 	const delay = 150;
 
@@ -29,17 +34,96 @@ const HeroSection = ({ scrollToHandle }) => {
 		return () => clearTimeout(timerId);
 	}, [text]);
 
+	useEffect(() => {
+		if (count > 0 && count % 5 == 0) {
+			setShowAlert(true);
+		}
+	}, [count]);
+
 	const handleImageLoad = () => {
 		setIsLoading(false);
 	};
 
+	const birdHit = (e) => {
+		const circle = document.createElement('div');
+		circle.style.width = '15px';
+		circle.style.height = '15px';
+		circle.style.borderRadius = '50%';
+		circle.style.backgroundColor = '#99422E';
+		circle.style.position = 'absolute';
+		circle.style.left = `${e.clientX}px`;
+		circle.style.top = `${e.clientY}px`;
+		circle.style.zIndex = '10';
+		return circle;
+	};
+
+	const handleBirdClick = (e) => {
+		if (isBirdVisible) {
+			const hitPoint = birdHit(e);
+			document.body.appendChild(hitPoint);
+			setTimeout(() => {
+				hitPoint.remove();
+			}, 800);
+
+			setIsBirdVisible(false);
+			setCount((prev) => prev + 1);
+			setTimeout(() => {
+				setIsBirdVisible(true);
+			}, 3000);
+		}
+	};
+
+	const handleBirdSecondClick = (e) => {
+		if (isBirdSecondVisible) {
+			const hitPoint = birdHit(e);
+			document.body.appendChild(hitPoint);
+			setTimeout(() => {
+				hitPoint.remove();
+			}, 800);
+
+			setIsBirdSecondVisible(false);
+			setCount((prev) => prev + 1);
+			setTimeout(() => {
+				setIsBirdSecondVisible(true);
+			}, 2500);
+		}
+	};
+
 	return (
 		<>
+			{showAlert && (
+				<Alert
+					style={{
+						position: 'absolute',
+						width: '250px',
+						top: 0,
+						left: '50%',
+						transform: 'translate(-50%, 0)',
+					}}
+					severity='error'
+					onClick={() => setShowAlert(false)}
+					action={
+						<Button color='inherit' size='small'>
+							X
+						</Button>
+					}
+				>
+					Stop it! You have killed {count} birds.
+				</Alert>
+			)}
 			<div className='bird-container'>
-				<div className='bird'></div>
+				<div
+					onClick={(e) => handleBirdClick(e)}
+					className={isBirdVisible ? 'bird' : 'bird bird-hidden'}
+				></div>
 			</div>
 			<div className='bird-container-second'>
-				<div className='bird-second'></div>
+				<div
+					onClick={(e) => handleBirdSecondClick(e)}
+					className={
+						isBirdSecondVisible ? 'bird-second' : 'bird-second bird-hidden'
+					}
+				></div>
 			</div>
 			{isLoading && <CircularProgress />}
 			<Box
@@ -59,6 +143,7 @@ const HeroSection = ({ scrollToHandle }) => {
 					<img
 						onLoad={handleImageLoad}
 						onContextMenu={(e) => e.preventDefault()}
+						onMouseDown={(e) => e.preventDefault()}
 						src='tiationg.png'
 						alt='Tiationg Kho'
 						style={{
@@ -68,6 +153,7 @@ const HeroSection = ({ scrollToHandle }) => {
 							marginBottom: '20px',
 							display: isLoading ? 'none' : 'inline',
 						}}
+						className='photo'
 					/>
 					<Typography
 						variant='h2'
