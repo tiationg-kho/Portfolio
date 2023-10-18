@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Container, Typography, Button, Box } from '@mui/material';
+import {
+	Container,
+	Typography,
+	Button,
+	Box,
+	CircularProgress,
+} from '@mui/material';
 
 import Contact from './Contact';
 
 const FULL_TEXT = 'Software Development Engineer @ Seattle';
 
-const HeroSection = () => {
+// eslint-disable-next-line react/prop-types
+const HeroSection = ({ scrollToHandle }) => {
 	const [text, setText] = useState('S');
+	const [isLoading, setIsLoading] = useState(true);
+
 	const delay = 150;
 
 	useEffect(() => {
@@ -20,6 +29,10 @@ const HeroSection = () => {
 		return () => clearTimeout(timerId);
 	}, [text]);
 
+	const handleImageLoad = () => {
+		setIsLoading(false);
+	};
+
 	return (
 		<>
 			<div className='bird-container'>
@@ -28,13 +41,15 @@ const HeroSection = () => {
 			<div className='bird-container-second'>
 				<div className='bird-second'></div>
 			</div>
+			{isLoading && <CircularProgress />}
 			<Box
+				onLoad={handleImageLoad}
 				sx={{
 					backgroundImage: `url('background.png')`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					height: '110vh',
-					display: 'flex',
+					display: isLoading ? 'none' : 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
@@ -42,6 +57,7 @@ const HeroSection = () => {
 			>
 				<Container maxWidth='sm'>
 					<img
+						onLoad={handleImageLoad}
 						src='tiationg.png'
 						alt='Tiationg Kho'
 						style={{
@@ -49,6 +65,7 @@ const HeroSection = () => {
 							width: '150px',
 							height: '150px',
 							marginBottom: '20px',
+							display: isLoading ? 'none' : 'inline',
 						}}
 					/>
 					<Typography
@@ -61,7 +78,12 @@ const HeroSection = () => {
 					>
 						Tiationg Kho
 					</Typography>
-					<Typography variant='h5' component='h2' gutterBottom>
+					<Typography
+						className='intro-text'
+						variant='h5'
+						component='h2'
+						gutterBottom
+					>
 						{text}
 					</Typography>
 					<Typography variant='h6'>
@@ -70,7 +92,7 @@ const HeroSection = () => {
 					<Button
 						variant='contained'
 						color='primary'
-						href='#about'
+						onClick={scrollToHandle}
 						sx={{ backgroundColor: '#4F9298', marginTop: '2rem' }}
 					>
 						Learn More
