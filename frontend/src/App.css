@@ -39,6 +39,12 @@
 .icon-button:focus {
 	transform: scale(1.2);
 }
+.photo {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
 @keyframes fadeIn {
 	0% {
 		opacity: 0;

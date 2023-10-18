@@ -60,6 +60,7 @@ body {
 	animation-iteration-count: infinite;
 	animation-duration: 1s;
 	animation-delay: -0.5s;
+	cursor: url('assets/bow.cur'), auto;
 }
 
 .bird-second {
@@ -73,8 +74,19 @@ body {
 	animation-iteration-count: infinite;
 	animation-duration: 1.2s;
 	animation-delay: -0.3s;
+	cursor: url('assets/bow.cur'), auto;
 }
-
+.bird-hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+.bird-hit {
+	border: 50px solid red;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+}
 @keyframes fly-right {
 	0% {
 		transform: translateY(12vh) translateX(1vw) scale(0.6);
