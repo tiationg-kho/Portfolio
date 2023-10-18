@@ -58,6 +58,7 @@ const HeroSection = ({ scrollToHandle }) => {
 				<Container maxWidth='sm'>
 					<img
 						onLoad={handleImageLoad}
+						onContextMenu={(e) => e.preventDefault()}
 						src='tiationg.png'
 						alt='Tiationg Kho'
 						style={{
