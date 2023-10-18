@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
 	const parallax = useRef(null);
-	const isMobile = window.innerWidth <= 600;
+	const isMobile = window.innerWidth <= 500;
 
 	const scrollToHandle = () => {
 		parallax.current.scrollTo(1);
@@ -15,37 +15,7 @@ function App() {
 
 	return (
 		<div className='app'>
-			<Parallax ref={parallax} pages={isMobile ? 4.3 : 3.6}>
-				<ParallaxLayer offset={2.2} speed={1.2} style={{ opacity: 0.4 }}>
-					<img
-						src='fav-green.svg'
-						style={{ display: 'block', width: '20%', marginLeft: '5%' }}
-					/>
-					<img
-						src='fav-green.svg'
-						style={{ display: 'block', width: '20%', marginLeft: '85%' }}
-					/>
-				</ParallaxLayer>
-				<ParallaxLayer offset={2.4} speed={-0.4} style={{ opacity: 0.4 }}>
-					<img
-						src='fav-green.svg'
-						style={{ display: 'block', width: '10%', marginLeft: '35%' }}
-					/>
-					<img
-						src='fav-green.svg'
-						style={{ display: 'block', width: '20%', marginLeft: '65%' }}
-					/>
-				</ParallaxLayer>
-				<ParallaxLayer offset={3.1} speed={0.8} style={{ opacity: 0.4 }}>
-					<img
-						src='fav-green.svg'
-						style={{ display: 'block', width: '20%', marginLeft: '15%' }}
-					/>
-					<img
-						src='fav-green.svg'
-						style={{ display: 'block', width: '10%', marginLeft: '95%' }}
-					/>
-				</ParallaxLayer>
+			<Parallax ref={parallax} pages={isMobile ? 4.3 : 3}>
 				<ParallaxLayer offset={0} speed={-0.1}>
 					<HeroSection scrollToHandle={scrollToHandle} />
 				</ParallaxLayer>
@@ -53,7 +23,7 @@ function App() {
 					<AboutMe />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={isMobile ? 4 : 3}
+					offset={isMobile ? 3.9 : 2.7}
 					speed={0.2}
 					onClick={() => parallax.current.scrollTo(0)}
 				>
