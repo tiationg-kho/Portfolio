@@ -223,6 +223,7 @@ const AboutMe = () => {
 					display: 'grid',
 					gridTemplateColumns: 'repeat(12, 1fr)',
 					gap: '0.2rem',
+					marginBottom: '2rem',
 				}}
 			>
 				{skills.map((skill, idx) => (
