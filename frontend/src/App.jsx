@@ -7,10 +7,14 @@ import './App.css';
 
 function App() {
 	const parallax = useRef(null);
-	const isMobile = window.innerWidth <= 500;
+	const isMobile = window.innerWidth <= 600;
 
 	const scrollToHandle = () => {
 		parallax.current.scrollTo(1);
+	};
+
+	const jumpHandle = () => {
+		parallax.current.scrollTo(0);
 	};
 
 	return (
@@ -22,12 +26,8 @@ function App() {
 				<ParallaxLayer offset={1} speed={0.8}>
 					<AboutMe />
 				</ParallaxLayer>
-				<ParallaxLayer
-					offset={isMobile ? 3.8 : 2.15}
-					speed={0.2}
-					onClick={() => parallax.current.scrollTo(0)}
-				>
-					<Footer />
+				<ParallaxLayer offset={isMobile ? 3.8 : 2.15} speed={0.2}>
+					<Footer jumpHandle={jumpHandle} />
 				</ParallaxLayer>
 			</Parallax>
 		</div>

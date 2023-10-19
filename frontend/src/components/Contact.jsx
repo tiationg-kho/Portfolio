@@ -4,9 +4,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 
 const Contact = () => {
-	const clickHandle = (e) => {
-		e.stopPropagation();
-	};
 	return (
 		<>
 			<IconButton
@@ -14,7 +11,6 @@ const Contact = () => {
 				color='inherit'
 				href='https://github.com/tiationg-kho'
 				target='_blank'
-				onClick={clickHandle}
 			>
 				<GitHubIcon />
 			</IconButton>
@@ -23,7 +19,6 @@ const Contact = () => {
 				color='inherit'
 				href='https://www.linkedin.com/in/tiationgkho'
 				target='_blank'
-				onClick={clickHandle}
 			>
 				<LinkedInIcon />
 			</IconButton>
@@ -32,7 +27,6 @@ const Contact = () => {
 				color='inherit'
 				href='mailto:tiationgkho@gmail.com'
 				target='_blank'
-				onClick={clickHandle}
 			>
 				<EmailIcon />
 			</IconButton>
