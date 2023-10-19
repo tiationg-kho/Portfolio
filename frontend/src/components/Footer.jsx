@@ -18,6 +18,8 @@ const Footer = ({ jumpHandle }) => {
 				backgroundColor: '#4F9298',
 				padding: isExpanded ? '1rem' : 0,
 				color: 'white',
+				position: 'relative',
+				minWidth: '100%',
 			}}
 			sx={{ borderRadius: 2 }}
 		>
