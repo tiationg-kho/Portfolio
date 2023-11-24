@@ -132,9 +132,9 @@ const HeroSection = ({ scrollToHandle }) => {
 			<Box
 				onLoad={handleImageLoad}
 				sx={{
-					backgroundImage: `url('background.png')`,
+					backgroundImage: `url('bg.gif')`,
 					backgroundSize: 'cover',
-					backgroundPosition: 'center',
+					backgroundPosition: 'center right',
 					height: '110vh',
 					display: isLoading ? 'none' : 'flex',
 					flexDirection: 'column',
