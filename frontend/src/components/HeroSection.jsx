@@ -164,7 +164,10 @@ const HeroSection = ({ scrollToHandle }) => {
 						gutterBottom
 						color='white'
 						fontWeight='700'
-						sx={{ letterSpacing: '0.025em' }}
+						sx={{
+							letterSpacing: '0.025em',
+							textShadow: `0.5px 0.5px 0 #403D3E`,
+						}}
 					>
 						Tiationg Kho
 					</Typography>
@@ -172,6 +175,9 @@ const HeroSection = ({ scrollToHandle }) => {
 						className='intro-text'
 						variant='h5'
 						component='h2'
+						sx={{
+							textShadow: `0.3px 0.3px 0 #000`,
+						}}
 						gutterBottom
 					>
 						{text}
